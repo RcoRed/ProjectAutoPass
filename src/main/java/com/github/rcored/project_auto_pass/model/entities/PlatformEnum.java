@@ -10,12 +10,13 @@ import java.util.function.Consumer;
 @AllArgsConstructor
 //@Setter
 @Getter
-public enum Platform {
+public enum PlatformEnum {
     DEFAULT( (account) -> System.out.println("connect"),(oldAccount,newAccount) -> System.out.println("update?"))
     //GOOGLE("GOOGLE", () -> System.out.println("connettendo a google")),
     //META("META", () -> System.out.println("connettendo a meta")),
     //TWITTER("TWITTER", () -> System.out.println("connettendo a twitter"))
     ;
+    //FunctionalInterfaces
     private final Consumer<Account> connect;
     private final BiConsumer<Account, Account> update;
 
@@ -27,11 +28,8 @@ public enum Platform {
         update.accept(oldAccount,newAccount);
     }
 
-    static Platform getPlatformFromName(String platformName){
-        return Arrays.stream(Platform.values()).filter(p -> p.name().equals(platformName)).findFirst().orElse(Platform.DEFAULT);
+    static PlatformEnum getPlatformFromName(String platformName){
+        return Arrays.stream(PlatformEnum.values()).filter(p -> p.name().equals(platformName)).findFirst().orElse(PlatformEnum.DEFAULT);
     }
 
 }
-//ricordati i SAM
-//java.util.function
-//@FunctionalInterface

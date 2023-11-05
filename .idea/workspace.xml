@@ -4,21 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ba03807-eb7d-4131-a0d3-ea3b62812361" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/controller/authController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/data/abstractions/AbstractAccountCrudRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/data/abstractions/AbstractGroupCrudRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/data/implementations/AccountAccountCrudRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/data/implementations/GroupCrudRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/entities/Account.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/entities/Group.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/entities/Platform.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/services/AuthService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/services/CrudService.java" afterDir="false" />
+    <list default="true" id="3ba03807-eb7d-4131-a0d3-ea3b62812361" name="Changes" comment="prima versione creazione progetto">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/data/abstractions/AbstractPlatform.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/entities/platforms/Default.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/entities/platforms/Platform.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/rcored/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/rcored/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/entities/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/entities/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/entities/Platform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/entities/PlatformEnum.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,8 +21,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
         <option value="Interface" />
       </list>
     </option>
@@ -97,6 +90,29 @@
       <option name="presentableId" value="Default" />
       <updated>1687972665229</updated>
     </task>
+    <task id="LOCAL-00001" summary="prima versione creazione progetto">
+      <created>1699200879778</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1699200879778</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="prima versione creazione progetto" />
+    <option name="LAST_COMMIT_MESSAGE" value="prima versione creazione progetto" />
   </component>
 </project>
