@@ -4,14 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ba03807-eb7d-4131-a0d3-ea3b62812361" name="Changes" comment="prima versione creazione progetto">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/data/abstractions/AbstractPlatform.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/entities/platforms/Default.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/entities/platforms/Platform.java" afterDir="false" />
+    <list default="true" id="3ba03807-eb7d-4131-a0d3-ea3b62812361" name="Changes" comment="seconda versione creazione progetto (abstractPlatform)">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/entities/platforms/AbstractPlatform.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/services/AccountCrudService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/services/GroupCrudService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/view/InLineView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/rcored/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/rcored/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/data/abstractions/AbstractGroupCrudRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/data/abstractions/AbstractGroupCrudRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/data/abstractions/AbstractPlatform.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/data/implementations/AccountAccountCrudRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/data/implementations/AccountCrudRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/data/implementations/GroupCrudRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/data/implementations/GroupCrudRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/entities/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/entities/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/entities/Platform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/entities/PlatformEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/entities/Group.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/entities/Group.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/entities/PlatformEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/entities/PlatformEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/entities/platforms/Default.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/entities/platforms/Default.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/entities/platforms/Platform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/entities/platforms/Platform.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,8 +30,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -97,7 +105,14 @@
       <option name="project" value="LOCAL" />
       <updated>1699200879778</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="seconda versione creazione progetto (abstractPlatform)">
+      <created>1699215505014</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1699215505014</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -113,6 +128,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="prima versione creazione progetto" />
-    <option name="LAST_COMMIT_MESSAGE" value="prima versione creazione progetto" />
+    <MESSAGE value="seconda versione creazione progetto (abstractPlatform)" />
+    <option name="LAST_COMMIT_MESSAGE" value="seconda versione creazione progetto (abstractPlatform)" />
   </component>
 </project>

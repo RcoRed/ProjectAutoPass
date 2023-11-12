@@ -11,13 +11,11 @@ import lombok.*;
 public class Account {
     private int id;
     private String name;    //nome da visualizzare
-    //attenzione
-    private Platform platform;  //Platform associata a questo account
     private String email;
     private String password;
+    private Platform platform;  //Platform associata a questo account
 
-    public Account(int id, String name, Platform platform, String email, String password) {
-        this.id = id;
+    public Account(String name, String email, String password,Platform platform) {
         this.name = name;
         this.platform = platform;
         this.email = email;

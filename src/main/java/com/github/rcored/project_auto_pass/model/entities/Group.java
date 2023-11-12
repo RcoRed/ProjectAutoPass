@@ -16,4 +16,15 @@ public class Group {
     //private String password;
     //private boolean favorite;
 
+    public int firstAvailableAccountId(){
+        int counter = 1;
+        for (Account a : accounts){
+            if (counter == a.getId()){
+                counter++;
+            }else {
+                break;
+            }
+        }
+        return counter;
+    }
 }

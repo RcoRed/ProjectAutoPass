@@ -12,22 +12,19 @@ import java.util.Optional;
 @AllArgsConstructor
 @Setter
 @Getter
-public class AccountAccountCrudRepository implements AbstractAccountCrudRepository {
+public class AccountCrudRepository implements AbstractAccountCrudRepository {
 
-    private int nextId;
+    private static final String JSON_TYPE = ".json";
+    private static final String JSON_DIR_PATH = "groups/";
     private Gson gson;
 
     @Override
     public Account create(Group group, Account account) {
-        try (FileOutputStream output = new FileOutputStream(group.getGroupNameId() + ".json");
+        try (FileOutputStream output = new FileOutputStream(JSON_DIR_PATH + group.getGroupNameId() + JSON_TYPE);
                 PrintWriter pw = new PrintWriter(output)){
-            account.setId(nextId);
+            account.setId(group.firstAvailableAccountId());
             group.getAccounts().add(account);
-            //scrivo sul file
-            var c = gson.toJson(group);
-            pw.println(c);
-            //pw.flush();
-            //output.getFD().sync();
+            gson.toJson(group,pw);
             return account;
         }catch (IOException e) {    //da cambiare
             e.printStackTrace();

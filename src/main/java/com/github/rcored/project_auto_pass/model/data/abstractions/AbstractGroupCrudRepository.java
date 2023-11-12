@@ -13,4 +13,6 @@ public interface AbstractGroupCrudRepository {
     Group update(Group group);
 
     boolean deleteByNameId(String groupNameId);
+
+    Iterable<Group> findAllGroup();
 }
