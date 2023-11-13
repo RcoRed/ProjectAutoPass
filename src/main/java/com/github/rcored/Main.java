@@ -1,5 +1,6 @@
 package com.github.rcored;
 
+import com.github.rcored.project_auto_pass.PlatformTypeAdapter;
 import com.github.rcored.project_auto_pass.model.data.implementations.AccountCrudRepository;
 import com.github.rcored.project_auto_pass.model.data.implementations.GroupCrudRepository;
 import com.github.rcored.project_auto_pass.model.entities.platforms.Default;
@@ -38,7 +39,7 @@ public class Main {
         System.out.println(Platform.getPLATFORM_MAP().get(1) instanceof Platform);
         System.out.println(Platform.getPLATFORM_MAP().get(1) instanceof Default);
         System.out.println(Platform.getPLATFORM_MAP().get(1));
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapter(Platform.class, new PlatformTypeAdapter()).create();
         InLineView view = new InLineView(new GroupCrudService(new GroupCrudRepository(gson)),
                 new AccountCrudService(new AccountCrudRepository(gson)));
         view.start();

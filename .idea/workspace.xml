@@ -4,22 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ba03807-eb7d-4131-a0d3-ea3b62812361" name="Changes" comment="seconda versione creazione progetto (abstractPlatform)">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/entities/platforms/AbstractPlatform.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/services/AccountCrudService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/services/GroupCrudService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/view/InLineView.java" afterDir="false" />
+    <list default="true" id="3ba03807-eb7d-4131-a0d3-ea3b62812361" name="Changes" comment="creata la prima versione della view, problema con la conversione da json per la classe astratta Platform, (forse da fare con enum?)">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/PlatformTypeAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/rcored/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/rcored/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/data/abstractions/AbstractGroupCrudRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/data/abstractions/AbstractGroupCrudRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/data/abstractions/AbstractPlatform.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/data/implementations/AccountAccountCrudRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/data/implementations/AccountCrudRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/data/implementations/GroupCrudRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/data/implementations/GroupCrudRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/entities/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/entities/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/entities/Group.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/entities/Group.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/entities/PlatformEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/entities/PlatformEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/entities/platforms/Default.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/entities/platforms/Default.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/entities/platforms/Platform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/rcored/project_auto_pass/model/entities/platforms/Platform.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +100,14 @@
       <option name="project" value="LOCAL" />
       <updated>1699215505014</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="creata la prima versione della view, problema con la conversione da json per la classe astratta Platform, (forse da fare con enum?)">
+      <created>1699831149234</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1699831149234</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -129,6 +124,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="prima versione creazione progetto" />
     <MESSAGE value="seconda versione creazione progetto (abstractPlatform)" />
-    <option name="LAST_COMMIT_MESSAGE" value="seconda versione creazione progetto (abstractPlatform)" />
+    <MESSAGE value="creata la prima versione della view, problema con la conversione da json per la classe astratta Platform, (forse da fare con enum?)" />
+    <option name="LAST_COMMIT_MESSAGE" value="creata la prima versione della view, problema con la conversione da json per la classe astratta Platform, (forse da fare con enum?)" />
   </component>
 </project>
