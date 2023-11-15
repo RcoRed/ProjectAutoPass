@@ -34,12 +34,13 @@ public class AccountCrudRepository implements AbstractAccountCrudRepository {
 
     @Override
     public Optional<Account> readById(Group group, int id) {
-        try (Reader reader = new FileReader(group.getGroupNameId() + ".json")) {
+        try (Reader reader = new FileReader( JSON_DIR_PATH + group.getGroupNameId() + JSON_TYPE)) {
             //find the account with the id we need
-            return gson.fromJson(reader,Group.class).getAccounts()
-                                                    .stream()
-                                                    .filter(a -> a.getId() == id)
-                                                    .findFirst();
+            return Optional.ofNullable(gson.fromJson(reader, Group.class)).get()
+                    .getAccounts()
+                    .stream()
+                    .filter(a -> a.getId() == id)
+                    .findFirst();
         } catch (FileNotFoundException e){  //if the file(group) does not exist
             e.printStackTrace();
             throw new RuntimeException(e);
@@ -57,13 +58,15 @@ public class AccountCrudRepository implements AbstractAccountCrudRepository {
 
     @Override
     public void deleteById(Group group, int id) {
-        try (FileOutputStream output = new FileOutputStream(group.getGroupNameId() + ".json");
+        try (FileOutputStream output = new FileOutputStream(JSON_DIR_PATH + group.getGroupNameId() + JSON_TYPE);
              PrintWriter pw = new PrintWriter(output)){
-            //recreating the collection without the account that mach the id
-            group.setAccounts(group.getAccounts()
-                    .stream()
+
+            //recreating and setting the collection without the account that match the id
+            group.setAccounts(group.getAccounts().stream()
                     .filter(a -> a.getId() != id)
-                    .toList());
+                    .toList()
+            );
+
             //write the file
             gson.toJson(group,pw);
         } catch (FileNotFoundException e){  //if the file(group) does not exist
