@@ -1,6 +1,6 @@
 package com.github.rcored;
 
-import com.github.rcored.project_auto_pass.PlatformTypeAdapter;
+import com.github.rcored.project_auto_pass.model.utilities.gson.PlatformTypeAdapter;
 import com.github.rcored.project_auto_pass.model.data.implementations.AccountCrudRepository;
 import com.github.rcored.project_auto_pass.model.data.implementations.GroupCrudRepository;
 import com.github.rcored.project_auto_pass.model.entities.platforms.Default;
@@ -35,7 +35,7 @@ public class Main {
 //            ca = console.nextLine().charAt(0);
 //        }while (ca != 'q');
         Platform.getPLATFORM_MAP(); //carica le Platform
-        ;
+
         System.out.println(Platform.getPLATFORM_MAP().get(1) instanceof Platform);
         System.out.println(Platform.getPLATFORM_MAP().get(1) instanceof Default);
         System.out.println(Platform.getPLATFORM_MAP().get(1));

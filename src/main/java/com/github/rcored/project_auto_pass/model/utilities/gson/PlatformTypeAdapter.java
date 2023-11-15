@@ -1,4 +1,4 @@
-package com.github.rcored.project_auto_pass;
+package com.github.rcored.project_auto_pass.model.utilities.gson;
 
 import com.github.rcored.project_auto_pass.model.entities.platforms.Default;
 import com.github.rcored.project_auto_pass.model.entities.platforms.Platform;
@@ -16,40 +16,27 @@ public class PlatformTypeAdapter extends TypeAdapter<Platform> {
 
     @Override
     public void write(JsonWriter out, Platform value) throws IOException {
-        if (value instanceof Default) {
-            out.beginObject();
-            out.name("type").value("Default");
-            out.name("properties");
-            gson.toJson(value, Default.class, out);
-            out.endObject();
-        } else {
-            // gestisci altri tipi di Platform qui
-        }
+        //value dovrebbe essere la Platform dell'account
+        gson.toJson(value, Default.class, out); //lo scrivo sul file
     }
 
     @Override
     public Platform read(JsonReader in) throws IOException {
+        int id = 0;
+
         in.beginObject();
-        String type = "";
-        JsonElement properties = JsonNull.INSTANCE;
-        while (in.hasNext()) {
-            switch (in.nextName()) {
-                case "type":
-                    type = in.nextString();
-                    break;
-                case "properties":
-                    properties = gson.fromJson(in, JsonElement.class);
-                    break;
+
+        while (in.hasNext()){
+            if (in.nextName().equals("id")){    //controllo se il prossimo campo è id (dovrebbe essere superfluo ma sempre meglio controllare)
+                id  = in.nextInt();
+            }else {
+                in.nextString();    //serve per portare avanti "in" fino alla fine dell'oggetto json (se no impazzisce)
             }
         }
+
         in.endObject();
 
-        if ("Default".equals(type)) {
-            return gson.fromJson(properties, Default.class);
-        } else {
-            // gestisci altri tipi di Platform qui
-            return null;
-        }
+        return Platform.getPLATFORM_MAP().get(id);
     }
 }
 /*
