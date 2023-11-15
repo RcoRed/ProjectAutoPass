@@ -60,9 +60,10 @@ public class InLineView {
     }
 
     private static void visualizzaListaGruppi(){
-        List<Group> groupList = StreamSupport.stream(groupService.findAllGroup().spliterator(),false).toList();
+        List<Group> groupList = null;
         char choiceKey;
         do {
+            groupList = StreamSupport.stream(groupService.findAllGroup().spliterator(),false).toList();
             System.out.println("____________________ MENU LISTA GRUPPI ____________________");
             System.out.println("|-- * ----> Inserisci il numero del GRUPPO da visualizzare");
             System.out.println();
@@ -102,17 +103,47 @@ public class InLineView {
             System.out.println("|-- e ----> Elimina un account");
             System.out.println("|-- q ----> Indietro");
             System.out.println("_________________________________________________");
-            System.out.println("| ***  " + group.getGroupNameId() + "  *** |");
+            System.out.println("| ***  " + group.getGroupNameId() + "  *** | <--- NOME GRUPPO -- |");
+            System.out.println("| ***  ACCOUNT trovati : " + group.getAccounts().size() + "  *** |");
             group.getAccounts().forEach(a -> System.out.println("|-- " + a.getId() + " ----> " + a.getName()));
             choiceKey = console.nextLine().charAt(0);
             switch (choiceKey) {
                 case 'q', 'Q' -> System.out.println("| ***  INDIETRO  *** |");
                 case 'a', 'A' -> creaAccount(group);
                 case 's', 'S' -> visualizzaListaGruppi();
+                case 'e', 'E' -> {
+                    if (group.getAccounts().size() == 0){
+                        System.out.println("| *** NON CI SONO ACCOUNT DA ELIMINARE *** |");
+                        break;
+                    }
+                    int accountId;
+                    System.out.println("| ***  INSERISCI L'ACCOUNT CHE VUOI ELIMINARE  *** |");
+                    System.out.println("|-- * ----> Elimina account");
+                    accountId = console.nextLine().charAt(0) - 48;
+                    if (group.getAccounts().stream().filter(a -> a.getId() == accountId).findFirst().isEmpty()){    //se account con id non esiste (primo controllo)
+                        System.out.println("| *** NESSUN ACCOUNT TROVATO CON QUESTO ID ***");
+                        break;
+                    }
+                    System.out.println("| ***  SEI SICURO DI VOLER ELIMINARE QUESTO ACCOUNT? ---> " +
+                            group.getAccounts().stream()
+                            .filter(a -> a.getId() == accountId)
+                            .findFirst()
+                            .orElseThrow()
+                            .getName()
+                    );
+                    System.out.println("| -- q ----> NO | ANNULLA |");
+                    System.out.println("| -- a ----> SI | ELIMINA |");
+                    choiceKey = console.nextLine().charAt(0);
+                    if (choiceKey == 'q' || choiceKey + 32 == 'q'){     //se annulla
+                        choiceKey = ' ';    //in questo modo rifaccio il do while
+                        break;
+                    }
+                    accountService.deleteById(group,accountId);
+                    group.setAccounts(group.getAccounts().stream().filter(a -> a.getId() != accountId).toList());   //lo elimino dall'account che ho qui
+                    System.out.println("| ***  ACCOUNT ELIMINATO CORRETTAMENTE *** |");
+                }
                 default -> {
                     int posizione = choiceKey - 48;
-                    System.out.println(posizione);
-                    System.out.println(group.getAccounts().size());
                     if ( posizione > 0 && posizione <= group.getAccounts().size()){
                         visualizzaAccount(group, posizione);
                     }else {
@@ -152,11 +183,11 @@ public class InLineView {
             System.out.println("__________________ MENU GRUPPO __________________");
             System.out.println("|-- s ----> Modifica account");
             System.out.println();
-            System.out.println("|-- e ----> Elimina un account");
+            System.out.println("|-- e ----> Elimina questo account");
             System.out.println("|-- q ----> Indietro");
             System.out.println("_________________________________________________");
-            System.out.println("| ***  " + group.getGroupNameId() + "  *** |");
-            System.out.println("| ***  " + account.getName() + "  *** |");
+            System.out.println("| ***  " + group.getGroupNameId() + "  *** | <--- NOME GRUPPO -- |");
+            System.out.println("| ***  " + account.getName() + "  *** | <--- NOME ACCOUNT -- |");
             System.out.println("| EMAIL : " + account.getEmail());
             System.out.println("| PASSWORD : " + account.getPassword());
             System.out.println("| PIATTAFORMA : " + account.getPlatform().getName());
@@ -166,9 +197,16 @@ public class InLineView {
                 case 's', 'S' -> System.out.println("modifica");
                 case 'e', 'E' -> {
                     System.out.println("| ***  SEI SICURO DI VOLER ELIMINARE QUESTO ACCOUNT?  *** |");
-//                    System.out.println("| ***  INDIETRO  *** |")  DA CONTINUARE
+                    System.out.println("| -- q ----> NO | ANNULLA |");
+                    System.out.println("| -- a ----> SI | ELIMINA |");
+                    choiceKey = console.nextLine().charAt(0);
+                    if (choiceKey == 'q' || choiceKey + 32 == 'q'){     //se annulla
+                        choiceKey = ' ';    //in questo modo rifaccio il do while
+                        break;
+                    }
+                    choiceKey = 'q';        //in questo modo tornerò anche indietro
                     accountService.deleteById(group,accountId);
-                    System.out.println("| ***  ACCOUNT ELIMINATO  *** |");
+                    System.out.println("| ***  ACCOUNT ELIMINATO CORRETTAMENTE *** |");
                 }
                 default -> System.out.println("| **  COMANDO NON CORRETTO  ** |");
             }
