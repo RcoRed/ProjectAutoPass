@@ -19,4 +19,8 @@ public class GroupCrudService {
         return groupRepo.findAllGroup();
     }
 
+    public boolean deleteByNameId(String groupNameId){
+        return groupRepo.deleteByNameId(groupNameId);
+    }
+
 }
