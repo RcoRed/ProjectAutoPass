@@ -6,17 +6,24 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+/** To initialize all the Platforms you need to call getPLATFORM_MAP() at the beginning of the app (main)
+ * @author Marco Martucci
+ * @version 0.1.0
+ */
 @AllArgsConstructor
 @ToString
 @Getter
 @Setter
 public abstract class Platform implements AbstractPlatform {
+    /** static Map that contains all the platforms, the key is also the id of the Platform */
     @Getter
     private static final Map<Integer,Platform> PLATFORM_MAP = new HashMap<>();
+    /** Represent the id of a Platform */
     private int id;
+    /** Represent the name of the Platform that will be displayed to the client */
     private String name;
 
-    //Carico nella map tutte le Platform
+    //Put in the Map all the Platforms
     static {
         PLATFORM_MAP.put(Default.getDEFAULT().getId(), Default.getDEFAULT());
     }

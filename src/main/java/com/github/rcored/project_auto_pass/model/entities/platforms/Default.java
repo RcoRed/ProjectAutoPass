@@ -3,7 +3,12 @@ package com.github.rcored.project_auto_pass.model.entities.platforms;
 import com.github.rcored.project_auto_pass.model.entities.Account;
 import lombok.Getter;
 
+/** Default Platform (Singleton)
+ * @author Marco Martucci
+ * @version 0.1.0
+ */
 public class Default extends Platform{
+    /** Object reference of itself */
     @Getter
     private static final Default DEFAULT;
 
@@ -12,6 +17,10 @@ public class Default extends Platform{
         DEFAULT = new Default();    //creo default
     }
 
+    /** Create the Default Platform (constructor)
+     * <p> id: 1 </p>
+     * <p> name: default </p>
+     */
     private Default() {
         super(1,"default");
     }
@@ -26,4 +35,3 @@ public class Default extends Platform{
         System.out.println("Updated?");
     }
 }
-//Singleton

@@ -17,18 +17,23 @@ import java.util.Optional;
 import static com.github.rcored.project_auto_pass.model.data.Constants.GROUP_DIR_PATH;
 import static com.github.rcored.project_auto_pass.model.data.Constants.JSON_TYPE;
 
+/** Implement all the CRUD operation for a Group (and an Account)
+ * @author Marco Martucci
+ * @version 0.1.0
+ * @implNote BusinessLogicException: define a business exception by its type.
+ *                 <p>type 1 = the group file already exist, so u can't create the group with that groupNameId.</p>
+ *                 <p>type 2 = the groupNameId can't contain a '.' (a dot)</p>
+ *                 <p>type 3 = the group file does not exist</p>
+ *                 <p>type 4 = the accountId key does not exist in the accounts map of the group</p>
+ */
 public class CrudService implements AbstractGroupService, AbstractAccountService {
 
-    /**
-     *  repo:  the repository implementation that you will use.
-     *  BusinessLogicException:  define a business exception by its type.
-     *                          type 1 = the group file already exist, so u can't create the group with that groupNameId.
-     *                          type 2 = the groupNameId can't contain a '.' (a dot)
-     *                          type 3 = the group file does not exist
-     *                          type 4 = the accountId key does not exist in the accounts map of the group
-    */
+    /** the repository implementation (injected). */
     private AbstractGroupCrudRepository repo;
 
+    /** Create the Service (constructor)
+     * <p> repo: the repository that is utilized by the Service </p>
+     */
     public CrudService(AbstractGroupCrudRepository repo) {
         this.repo = repo;
     }

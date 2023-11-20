@@ -8,9 +8,7 @@ import java.util.Objects;
 /** Represent a Group of Accounts
  * @author Marco Martucci
  * @version 0.1.0
- * @since 0.1.0
  */
-@NoArgsConstructor
 @AllArgsConstructor
 @Setter
 @Getter
