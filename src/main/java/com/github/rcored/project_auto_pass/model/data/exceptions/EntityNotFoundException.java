@@ -1,5 +1,10 @@
 package com.github.rcored.project_auto_pass.model.data.exceptions;
 
+/**
+ * @author Marco Martucci
+ * @version 0.1.0
+ * @since 0.1.0
+ * */
 public class EntityNotFoundException extends Exception{
 
     /**
@@ -14,7 +19,7 @@ public class EntityNotFoundException extends Exception{
      *                {@link #getCause()} method).  (A {@code null} value is
      *                permitted, and indicates that the cause is nonexistent or
      *                unknown.)
-     * @since 1.4
+     * @since 0.1.0
      */
     public EntityNotFoundException(String message, Throwable cause) {
         super(message, cause);

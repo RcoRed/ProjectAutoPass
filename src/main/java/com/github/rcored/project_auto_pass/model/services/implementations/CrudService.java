@@ -20,15 +20,8 @@ import static com.github.rcored.project_auto_pass.model.data.Constants.JSON_TYPE
 public class CrudService implements AbstractGroupService, AbstractAccountService {
 
     /**
-     *
-     *
-     *
-     *
-     *
-     *
-     *
-     *
-     *  BusinessLogicException  define a business exception by its type.
+     *  repo:  the repository implementation that you will use.
+     *  BusinessLogicException:  define a business exception by its type.
      *                          type 1 = the group file already exist, so u can't create the group with that groupNameId.
      *                          type 2 = the groupNameId can't contain a '.' (a dot)
      *                          type 3 = the group file does not exist

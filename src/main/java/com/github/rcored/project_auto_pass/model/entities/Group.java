@@ -5,18 +5,28 @@ import lombok.*;
 import java.util.Map;
 import java.util.Objects;
 
+/** Represent a Group of Accounts
+ * @author Marco Martucci
+ * @version 0.1.0
+ * @since 0.1.0
+ */
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
 @Getter
 @ToString
 public class Group {
-    //id
+    /** Represent the id of a group, and also the name of the file json */
     private String groupNameId;
+    /** Represent the Accounts linked to this Group.
+     *  The key (Integer) it's also the account id */
     private Map<Integer, Account> accounts;
     //private String password;
     //private boolean favorite;
 
+    /** Gets the first available id (key) in @accounts
+     *  @return An int representing the first id that can be associated to an Account
+     */
     public int firstAvailableAccountId(){
         int currentId = 1;
         for (int key : accounts.keySet()){

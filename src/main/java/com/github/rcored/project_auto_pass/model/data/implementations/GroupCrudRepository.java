@@ -15,11 +15,22 @@ import java.util.Optional;
 
 import static com.github.rcored.project_auto_pass.model.data.Constants.*;
 
+/**
+ * @author Marco Martucci
+ * @version 0.1.0
+ * @since 0.1.0
+ * */
 @AllArgsConstructor
 @Setter
 @Getter
 public class GroupCrudRepository implements AbstractGroupCrudRepository {
+    /** Represents the service (gson library) that manages the creation and reading of a json file */
     private Gson gson;
+    /**
+     * @param group It's the Group that will
+     *
+     * @since 0.1.0
+     * */
     @Override
     public Group create(Group group) throws DataException {
         try (FileOutputStream output = new FileOutputStream(GROUP_DIR_PATH_ + group.getGroupNameId() + JSON_TYPE);
