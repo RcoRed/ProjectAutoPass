@@ -14,6 +14,7 @@ import de.mkammerer.argon2.Argon2Factory;
 import de.mkammerer.argon2.Argon2Version;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
+import java.lang.management.MemoryUsage;
 import java.security.Security;
 import java.util.Scanner;
 
@@ -29,14 +30,9 @@ public class Main {
         //Argon2 version is 19 (should be)
         System.out.println(Argon2Version.DEFAULT_VERSION.getVersion());
 
-        //create an Argon2 object
-        Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id,16,32);
-
-        memory = 2048; //2GB
-        iteration = 1000;
-        parallelism = 2;
-
-        insertPassword(argon2);
+        //create an Argon2 object da eliminare
+        //Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id,16,32);
+        //insertPassword(argon2);
 
         //loads all the Platforms
         Platform.getPLATFORM_MAP();

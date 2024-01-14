@@ -27,21 +27,21 @@ public class Account {
     private Platform platform;  //Platform associata a questo account
 
     /** Create the Account (constructor)
-     * @param name the name of the Account that will be displayed by the client
+     * @param name the name of the Account that will be displayed by the client.
      * @param email the email linked to this Account.
-     * @param password the password linked to this Account
-     * @param platform the platform linked to this Account
+     * @param password the password linked to this Account.
+     * @param platform the platform linked to this Account.
      */
     public Account(String name, String email, String password, Platform platform) {
         this(name,email,password,null,platform);
     }
 
     /** Create the Account (constructor)
-     * @param name the name of the Account that will be displayed by the client
+     * @param name the name of the Account that will be displayed by the client.
      * @param email the email linked to this Account.
-     * @param password the password linked to this Account
-     * @param username the username linked to this Account
-     * @param platform the platform linked to this Account
+     * @param password the password linked to this Account.
+     * @param username the username linked to this Account.
+     * @param platform the platform linked to this Account.
      */
     public Account(String name, String email, String password, String username, Platform platform) {
         this.name = name;
