@@ -8,11 +8,17 @@ import com.github.rcored.project_auto_pass.model.entities.platforms.Platform;
 import com.github.rcored.project_auto_pass.model.utilities.gson.PlatformTypeAdapter;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import javax.crypto.Cipher;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.spec.SecretKeySpec;
 import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.security.*;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -40,6 +46,9 @@ class GroupCrudRepositoryTest {
         file = new File(GROUP_DIR_PATH);
         accountMapSetUp = new HashMap<>();
 
+        Security.insertProviderAt(new BouncyCastleProvider(),1);
+
+
         account1 = new Account(ACCOUNT_NAME_TEST1,ACCOUNT_EMAIL_TEST1,ACCOUNT_PASSWORD_TEST1,Platform.getPLATFORM_MAP().get(1));
         account1.setId(1);
         accountMapSetUp.put(account1.getId(),account1);
@@ -63,7 +72,10 @@ class GroupCrudRepositoryTest {
 
     @Test
     void create() {
+
+
         File[] filesBefore = file.listFiles();
+        //la cartella (groups) deve già esistere
         assertNotNull(filesBefore);
         try {
             repo.create(group);

@@ -8,8 +8,19 @@ import com.google.gson.Gson;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.spec.SecretKeySpec;
 import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.security.InvalidKeyException;
+import java.security.Key;
+import java.security.NoSuchAlgorithmException;
+import java.security.Security;
 import java.util.Arrays;
 import java.util.Optional;
 
@@ -35,12 +46,26 @@ public class GroupCrudRepository implements AbstractGroupCrudRepository {
     public Group create(Group group) throws DataException {
         try (FileOutputStream output = new FileOutputStream(GROUP_DIR_PATH_ + group.getGroupNameId() + JSON_TYPE);
              PrintWriter pw = new PrintWriter(output)){
+            //da cambiare e o eliminare
+            //inizia qui
+            Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+            //problema la stringa deve essere abbstanza lunga, magari creare un array di byte 32?
+            SecretKeySpec key = new SecretKeySpec("La mia password".getBytes(StandardCharsets.UTF_8),"AES");
+            System.out.println(key.getEncoded() + " - " + key.getFormat() + " - " + key.getAlgorithm());
+            System.out.println("ccccc");
+            cipher.init(Cipher.ENCRYPT_MODE, key);
+            System.out.println("bbbbb");
+            var c = cipher.doFinal(gson.toJson(group).getBytes());
+            //finisce qui
             //writing the file
             gson.toJson(group,pw);
             return group;
         }catch (IOException e) {
             throw new DataException("Error creating the GROUP file: " + group.getGroupNameId() + e.getMessage(),e.getCause());
-        }
+        } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException | IllegalBlockSizeException |
+                 BadPaddingException ignore){
+            System.err.println(ignore.getMessage());
+            return group;}
     }
     /** Read the file json of the Group, with the same groupNameFile name.
      * @param groupNameId It's the groupNameId (id) of the Group that you want to read

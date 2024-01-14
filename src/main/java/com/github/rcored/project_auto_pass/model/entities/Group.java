@@ -20,7 +20,6 @@ public class Group {
      *  The key (Integer) it's also the account id */
     private Map<Integer, Account> accounts;
     //private String password;
-    //private boolean favorite;
 
     /** Gets the first available id (key) in @accounts
      *  @return An int representing the first id that can be associated to an Account

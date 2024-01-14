@@ -11,7 +11,6 @@ import java.util.Optional;
 public interface AbstractAccountService {
 
     Account createAccount(Group group, Account account) throws DataException, BusinessLogicException;
-    Optional<Account> readAccountById(Group group, int accountId) throws BusinessLogicException;
     Account updateAccount(Group group, Account account) throws EntityNotFoundException, DataException, BusinessLogicException;
     boolean deleteAccountById(Group group, int accountId) throws EntityNotFoundException, DataException, BusinessLogicException;
 }
