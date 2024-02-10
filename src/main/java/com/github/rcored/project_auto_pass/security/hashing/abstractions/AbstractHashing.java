@@ -1,12 +1,15 @@
 package com.github.rcored.project_auto_pass.security.hashing.abstractions;
 
 import java.security.NoSuchAlgorithmException;
-
+/**
+ * @author Marco Martucci
+ * @version 0.1.0
+ * */
 public interface AbstractHashing {
 
     /** Use this method to hash a text
      * @param plainString the text that will be hashed.
-     * @return The hashed string of the plainString.
+     * @return The hashed string of plainString.
      */
     String hash(String plainString) throws NoSuchAlgorithmException;
 

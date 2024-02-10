@@ -56,7 +56,7 @@ public class HashingArgon2 implements AbstractHashing {
      * Use this method to hash a text
      *
      * @param plainString the text that will be hashed.
-     * @return The hashed string of the plainString.
+     * @return The hashed string of plainString.
      */
     @Override
     public String hash(String plainString) {
