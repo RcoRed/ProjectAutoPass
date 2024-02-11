@@ -3,10 +3,12 @@ package com.github.rcored.project_auto_pass.security.encryption.implementations;
 import com.github.rcored.project_auto_pass.security.encryption.abstractions.AbstractEncryption;
 
 import javax.crypto.*;
+import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
+import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
-import java.util.Arrays;
+import java.security.NoSuchProviderException;
 
 /** Implement Argon2 hashing by Argon2
  * @author Marco Martucci
@@ -20,9 +22,9 @@ public class EncryptionAES implements AbstractEncryption {
     private Cipher cipher;
 
     /** Create EncryptionAES (constructor) */
-    public EncryptionAES() throws NoSuchPaddingException, NoSuchAlgorithmException {
-        this.encryptionMethod = "AES/CTR/ISO/IEC-9797-1";
-        this.cipher = Cipher.getInstance(encryptionMethod);
+    public EncryptionAES() throws NoSuchPaddingException, NoSuchAlgorithmException, NoSuchProviderException {
+        this.encryptionMethod = "AES/CTR/PKCS5Padding";
+        this.cipher = Cipher.getInstance(encryptionMethod,"BC");
     }
 
     /** Create EncryptionAES (constructor)
@@ -50,23 +52,32 @@ public class EncryptionAES implements AbstractEncryption {
      * @return The encrypted string version of plainString.
      */
     @Override
-    public String encrypt(String plainString, String privateKey) throws InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
-        SecretKeySpec secretKey = new SecretKeySpec(privateKey.getBytes(), "AES");
+    public byte[] encrypt(String plainString, byte[] privateKey) throws InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
+        SecretKeySpec secretKey = new SecretKeySpec(privateKey, "AES");
         cipher.init(Cipher.ENCRYPT_MODE, secretKey);
-        return new String(cipher.doFinal(plainString.getBytes()));
+        return cipher.doFinal(plainString.getBytes());
     }
 
     /**
      * Use this method to hash a text
      *
-     * @param encryptedString the text that will be decrypted.
-     * @param privateKey the key that will be used to decrypt the text.
+     * @param encryptedByte the byte[] text that will be decrypted.
+     * @param privateKey the byte[] key (best if 256 bit) that will be used to decrypt the text.
+     * @param iV the IV used by the cipher to encrypt the plain string.
      * @return The plain string version of encryptedString.
      */
     @Override
-    public String decrypt(String encryptedString, String privateKey) throws InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
-        SecretKeySpec secretKey = new SecretKeySpec(privateKey.getBytes(), "AES");
-        cipher.init(Cipher.DECRYPT_MODE, secretKey);
-        return new String(cipher.doFinal(encryptedString.getBytes()));
+    public String decrypt(byte[] encryptedByte, byte[] privateKey, byte[] iV) throws InvalidKeyException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException {
+        SecretKeySpec secretKey = new SecretKeySpec(privateKey, "AES");
+        cipher.init(Cipher.DECRYPT_MODE, secretKey, new IvParameterSpec(iV));
+        return new String(cipher.doFinal(encryptedByte));
+    }
+
+    /** Use this method to take the cipher
+     * @return The cipher.
+     */
+    @Override
+    public Cipher getCipher() {
+        return this.cipher;
     }
 }

@@ -19,13 +19,13 @@ public class HashingJavaSHA3 implements AbstractHashing {
     String hashMethod;
 
     /** Create HashingJavaSHA3 (constructor) */
-    private HashingJavaSHA3() throws NoSuchAlgorithmException {
+    public HashingJavaSHA3() throws NoSuchAlgorithmException {
         this.hashMethod = "SHA3-256";
     }
     /** Create HashingJavaSHA3 (constructor)
      * @param hashMethod Represents hash method that Java will use.
      * */
-    private HashingJavaSHA3(String hashMethod) {
+    public HashingJavaSHA3(String hashMethod) {
         this.hashMethod = hashMethod;
     }
 
@@ -36,19 +36,17 @@ public class HashingJavaSHA3 implements AbstractHashing {
      * @return The hashed string of plainString.
      */
     @Override
-    public String hash(String plainString) throws NoSuchAlgorithmException {
-        return new String(MessageDigest.getInstance(hashMethod).digest(plainString.getBytes()));
+    public byte[] hash(String plainString) throws NoSuchAlgorithmException {
+        return MessageDigest.getInstance(hashMethod).digest(plainString.getBytes());
     }
 
-    /**
-     * Use this method verify the plain text with the hashed text
-     *
-     * @param hashedString the hashed text.
-     * @param plainString  the plain text that you want to verify.
+    /** Use this method verify the plain text with the hashed text
+     * @param plainString the plain text that you want to verify.
+     * @param hashedByte the byte[] hashed text.
      * @return TRUE if they are equals, FALSE otherwise.
      */
     @Override
-    public boolean verify(String hashedString, String plainString) throws NoSuchAlgorithmException {
-        return new String(MessageDigest.getInstance(hashMethod).digest(plainString.getBytes())).equals(hashedString);
+    public boolean verify(byte[] hashedByte, String plainString) throws NoSuchAlgorithmException {
+        return Arrays.equals(MessageDigest.getInstance(hashMethod).digest(plainString.getBytes()), hashedByte);
     }
 }

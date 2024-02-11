@@ -59,20 +59,21 @@ public class HashingArgon2 implements AbstractHashing {
      * @return The hashed string of plainString.
      */
     @Override
-    public String hash(String plainString) {
-        return argon2.hash(iteration,memory,parallelism,plainString.getBytes());
+    public byte[] hash(String plainString) {
+        return argon2.hash(iteration,memory,parallelism,plainString.getBytes()).getBytes();
     }
 
     /**
      * Use this method verify the plain text with the hashed text
      *
-     * @param hashedString the hashed text.
+     * @param hashedByte the hashed text.
      * @param plainString  the plain text that you want to verify.
      * @return TRUE if they are equals, FALSE otherwise.
      */
     @Override
-    public boolean verify(String hashedString, String plainString) {
-        return argon2.verify(hashedString,plainString.getBytes());
+    public boolean verify(byte[] hashedByte, String plainString) {
+        //It always wants first the string of the hashed password with all the argon info then it wants the byte[] of the plain password
+        return argon2.verify(new String(hashedByte),plainString.getBytes());
     }
 
     /** This method is required to calculate the memory that Argon2 will use

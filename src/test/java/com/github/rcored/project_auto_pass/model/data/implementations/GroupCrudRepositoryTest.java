@@ -13,11 +13,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import javax.crypto.Cipher;
-import javax.crypto.NoSuchPaddingException;
-import javax.crypto.spec.SecretKeySpec;
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.security.*;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -26,7 +22,7 @@ import java.util.Optional;
 
 import static com.github.rcored.project_auto_pass.model.data.Constants.GROUP_DIR_PATH_;
 import static com.github.rcored.project_auto_pass.model.data.Constants.JSON_TYPE;
-import static com.github.rcored.project_auto_pass.model.data.TestConstants.*;
+import static com.github.rcored.project_auto_pass.model.data.DataTestConstants.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class GroupCrudRepositoryTest {

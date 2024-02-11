@@ -14,17 +14,17 @@ public class AuthService {
         this.hashing = hashing;
     }
 
-    public String login(){
-        System.out.println("inserisci la password");
-        String pass = console.nextLine();
-
-        try {
-            return hashing.hash(pass);
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException("erroreeeeeeeeeeeeeeeeeeeeeeeeeee" + e);
-        }
-
-    }
+//    public String login(){
+//        System.out.println("inserisci la password");
+//        String pass = console.nextLine();
+//
+//        try {
+//            return hashing.hash(pass);
+//        } catch (NoSuchAlgorithmException e) {
+//            throw new RuntimeException("erroreeeeeeeeeeeeeeeeeeeeeeeeeee" + e);
+//        }
+//
+//    }
 
 
 }
