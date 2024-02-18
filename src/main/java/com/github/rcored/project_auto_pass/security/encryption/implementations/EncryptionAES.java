@@ -1,25 +1,27 @@
 package com.github.rcored.project_auto_pass.security.encryption.implementations;
 
 import com.github.rcored.project_auto_pass.security.encryption.abstractions.AbstractEncryption;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.crypto.*;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.security.NoSuchProviderException;
+import java.security.*;
+import java.util.Arrays;
 
 /** Implement Argon2 hashing by Argon2
  * @author Marco Martucci
  * @version 0.1.0
  * */
+@Getter
 public class EncryptionAES implements AbstractEncryption {
 
     /** Represents encryption method that Java will use */
     private String encryptionMethod;
     /** Represents cipher that will be used */
     private Cipher cipher;
+    private static final SecureRandom random = new SecureRandom();
 
     /** Create EncryptionAES (constructor) */
     public EncryptionAES() throws NoSuchPaddingException, NoSuchAlgorithmException, NoSuchProviderException {
@@ -52,10 +54,22 @@ public class EncryptionAES implements AbstractEncryption {
      * @return The encrypted string version of plainString.
      */
     @Override
-    public byte[] encrypt(String plainString, byte[] privateKey) throws InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
+    public byte[] encrypt(String plainString, byte[] privateKey) throws SecurityException {
         SecretKeySpec secretKey = new SecretKeySpec(privateKey, "AES");
-        cipher.init(Cipher.ENCRYPT_MODE, secretKey);
-        return cipher.doFinal(plainString.getBytes());
+        byte[] iv = new byte[16];
+        random.nextBytes(iv);
+        try {
+            cipher.init(Cipher.ENCRYPT_MODE, secretKey, new IvParameterSpec(iv));
+            return cipher.doFinal(plainString.getBytes());
+        } catch (InvalidKeyException e) {
+            throw new SecurityException("Error the key " + secretKey.getAlgorithm() + Arrays.toString(privateKey) +  " was not found." + e.getMessage(), e.getCause());
+        } catch (InvalidAlgorithmParameterException e) {
+            throw new SecurityException("Error the algorithm " + cipher.getAlgorithm() + " was not found." + e.getMessage(), e.getCause());
+        } catch (IllegalBlockSizeException e) {
+            throw new SecurityException("Error the block " + cipher.getAlgorithm() + " was not found." + e.getMessage(), e.getCause());
+        } catch (BadPaddingException e) {
+            throw new SecurityException("Error the padding " + cipher.getAlgorithm() + " was not found." + e.getMessage(), e.getCause());
+        }
     }
 
     /**
@@ -67,17 +81,20 @@ public class EncryptionAES implements AbstractEncryption {
      * @return The plain string version of encryptedString.
      */
     @Override
-    public String decrypt(byte[] encryptedByte, byte[] privateKey, byte[] iV) throws InvalidKeyException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException {
+    public String decrypt(byte[] encryptedByte, byte[] privateKey, byte[] iV) throws SecurityException {
         SecretKeySpec secretKey = new SecretKeySpec(privateKey, "AES");
-        cipher.init(Cipher.DECRYPT_MODE, secretKey, new IvParameterSpec(iV));
-        return new String(cipher.doFinal(encryptedByte));
-    }
+        try {
+            cipher.init(Cipher.DECRYPT_MODE, secretKey, new IvParameterSpec(iV));
+            return new String(cipher.doFinal(encryptedByte));
+        } catch (InvalidKeyException e) {
+            throw new SecurityException("Error the key " + secretKey.getAlgorithm() + Arrays.toString(privateKey) +  " is not valid." + e.getMessage(), e.getCause());
+        } catch (InvalidAlgorithmParameterException e) {
+            throw new SecurityException("Error the algorithm " + cipher.getAlgorithm() + " was not found." + e.getMessage(), e.getCause());
+        } catch (IllegalBlockSizeException e) {
+            throw new SecurityException("Error the block " + cipher.getAlgorithm() + " was not found." + e.getMessage(), e.getCause());
+        } catch (BadPaddingException e) {
+            throw new SecurityException("Error the padding " + cipher.getAlgorithm() + " was not found." + e.getMessage(), e.getCause());
+        }
 
-    /** Use this method to take the cipher
-     * @return The cipher.
-     */
-    @Override
-    public Cipher getCipher() {
-        return this.cipher;
     }
 }

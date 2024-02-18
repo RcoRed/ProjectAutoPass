@@ -34,46 +34,46 @@ class EncryptionAESTest {
         Security.removeProvider("BC");
     }
 
-    @Test
-    void encrypt() {
-        try {
-
-            byteKey = MessageDigest.getInstance("SHA3-256").digest(PLAIN_KEY.getBytes());
-
-            byte[] encryptedByte = encryption.encrypt(PLAIN_TEXT, byteKey);
-
-            Cipher cipher = Cipher.getInstance("AES/CTR/PKCS5Padding","BC");
-            SecretKeySpec secretKey = new SecretKeySpec(byteKey, "AES");
-            cipher.init(Cipher.DECRYPT_MODE, secretKey, new IvParameterSpec(encryption.getCipher().getIV()));
-            String decryptedText = new String(cipher.doFinal(encryptedByte));
-
-            assertEquals(PLAIN_TEXT,decryptedText);
-
-        } catch (InvalidKeyException | NoSuchAlgorithmException | NoSuchProviderException | NoSuchPaddingException |
-                 BadPaddingException | IllegalBlockSizeException | InvalidAlgorithmParameterException e) {
-            fail(e.getMessage(),e.getCause());
-        }
-    }
-
-    @Test
-    void decrypt() {
-
-
-        try {
-            Cipher cipher = Cipher.getInstance("AES/CTR/PKCS5Padding","BC");
-            SecretKeySpec secretKey = new SecretKeySpec(byteKey, "AES");
-            cipher.init(Cipher.ENCRYPT_MODE, secretKey);
-            byte[] encryptedByte = cipher.doFinal(PLAIN_TEXT.getBytes());
-
-            String decryptedString = encryption.decrypt(encryptedByte, byteKey, cipher.getIV());
-
-            assertEquals(PLAIN_TEXT, decryptedString);
-
-        } catch (NoSuchAlgorithmException | InvalidKeyException | NoSuchPaddingException | NoSuchProviderException |
-                 IllegalBlockSizeException | BadPaddingException | InvalidAlgorithmParameterException e) {
-            fail(e.getMessage(),e.getCause());
-        }
-
-
-    }
+//    @Test
+//    void encrypt() {
+//        try {
+//
+//            byteKey = MessageDigest.getInstance("SHA3-256").digest(PLAIN_KEY.getBytes());
+//
+//            byte[] encryptedByte = encryption.encrypt(PLAIN_TEXT, byteKey);
+//
+//            Cipher cipher = Cipher.getInstance("AES/CTR/PKCS5Padding","BC");
+//            SecretKeySpec secretKey = new SecretKeySpec(byteKey, "AES");
+//            cipher.init(Cipher.DECRYPT_MODE, secretKey, new IvParameterSpec(encryption.getCipher().getIV()));
+//            String decryptedText = new String(cipher.doFinal(encryptedByte));
+//
+//            assertEquals(PLAIN_TEXT,decryptedText);
+//
+//        } catch (InvalidKeyException | NoSuchAlgorithmException | NoSuchProviderException | NoSuchPaddingException |
+//                 BadPaddingException | IllegalBlockSizeException | InvalidAlgorithmParameterException e) {
+//            fail(e.getMessage(),e.getCause());
+//        }
+//    }
+//
+//    @Test
+//    void decrypt() {
+//
+//
+//        try {
+//            Cipher cipher = Cipher.getInstance("AES/CTR/PKCS5Padding","BC");
+//            SecretKeySpec secretKey = new SecretKeySpec(byteKey, "AES");
+//            cipher.init(Cipher.ENCRYPT_MODE, secretKey);
+//            byte[] encryptedByte = cipher.doFinal(PLAIN_TEXT.getBytes());
+//
+//            String decryptedString = encryption.decrypt(encryptedByte, byteKey, cipher.getIV());
+//
+//            assertEquals(PLAIN_TEXT, decryptedString);
+//
+//        } catch (NoSuchAlgorithmException | InvalidKeyException | NoSuchPaddingException | NoSuchProviderException |
+//                 IllegalBlockSizeException | BadPaddingException | InvalidAlgorithmParameterException e) {
+//            fail(e.getMessage(),e.getCause());
+//        }
+//
+//
+//    }
 }

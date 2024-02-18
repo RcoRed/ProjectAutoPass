@@ -5,7 +5,7 @@ package com.github.rcored.project_auto_pass.model.data.exceptions;
  * @version 0.1.0
  * @since 0.1.0
  * */
-public class DataException extends Exception{
+public class SecurityException extends Exception{
 
     /**
      * Constructs a new exception with the specified detail message and
@@ -21,18 +21,7 @@ public class DataException extends Exception{
      *                unknown.)
      * @since 0.1.0
      */
-    public DataException(String message, Throwable cause) {
+    public SecurityException(String message, Throwable cause) {
         super(message, cause);
-    }
-
-    /**
-     * Constructs a new exception with the specified detail message.
-     *
-     * @param message the detail message (which is saved for later retrieval
-     *                by the {@link #getMessage()} method).
-     * @since 0.1.0
-     */
-    public DataException(String message) {
-        super(message);
     }
 }

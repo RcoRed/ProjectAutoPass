@@ -1,9 +1,6 @@
 package com.github.rcored.project_auto_pass.model.data;
 
 public class DataTestConstants {
-    public static final String GROUP_DIR_PATH_ = "groups/";     //with / at the end
-    public static final String GROUP_DIR_PATH = "groups";       //without / at the end
-    public static final String JSON_TYPE = ".json";
 
     public static final String GROUP_NAME_TEST = "junitTest";
     public static final String GROUP_NAME_TEST_ERROR = "junitTest_Error";
@@ -19,4 +16,7 @@ public class DataTestConstants {
     public static final String ACCOUNT_PASSWORD_TEST2 = "secondAccountPasswordTest2";
     public static final String ACCOUNT_PASSWORD_TEST3 = "thirdAccountPasswordTest3";
     public static final String ACCOUNT_PASSWORD_TEST_ERROR = "thirdAccountPasswordTest_Error";
+    public static final String USER_PASSWORD_TEST1 = "first_UserPasswordTest!";
+    public static final String USER_PASSWORD_TEST2 = "secondUser_PasswordTest!";
+    public static final String USER_PASSWORD_TEST_ERROR = "secondUser_PasswordTest!_Error";
 }

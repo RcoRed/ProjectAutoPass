@@ -1,7 +1,9 @@
 package com.github.rcored.project_auto_pass.model.entities;
 
 import lombok.*;
+import org.bouncycastle.crypto.engines.AESEngine;
 
+import java.security.SecureRandom;
 import java.util.Map;
 import java.util.Objects;
 
@@ -14,12 +16,13 @@ import java.util.Objects;
 @Getter
 @ToString
 public class Group {
-    /** Represent the id of a group, and also the name of the file json */
+    /** Represent the id of a group, and also the name of the file json.*/
     private String groupNameId;
     /** Represent the Accounts linked to this Group.
      *  The key (Integer) it's also the account id */
     private Map<Integer, Account> accounts;
-    //private String password;
+    /** Represent an additional password to increase the Group protection.*/
+    private byte[] password;
 
     /** Gets the first available id (key) in @accounts
      *  @return An int representing the first id that can be associated to an Account

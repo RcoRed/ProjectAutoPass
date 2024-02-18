@@ -19,7 +19,7 @@ public interface AbstractEncryption {
      * @param privateKey the key that will be used to encrypt the text.
      * @return The encrypted string version of plainString.
      */
-    byte[] encrypt(String plainString, byte[] privateKey) throws InvalidKeyException, IllegalBlockSizeException, BadPaddingException;
+    byte[] encrypt(String plainString, byte[] privateKey) throws SecurityException;
 
     /**
      * Use this method to hash a text
@@ -29,7 +29,7 @@ public interface AbstractEncryption {
      * @param iV the IV used by the cipher to encrypt the plain string.
      * @return The plain string version of encryptedString.
      */
-    String decrypt(byte[] encryptedByte, byte[] privateKey, byte[] iV) throws InvalidKeyException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException;
+    String decrypt(byte[] encryptedByte, byte[] privateKey, byte[] iV) throws SecurityException;
 
     /** Use this method to take the cipher
      * @return The cipher.
